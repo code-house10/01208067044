@@ -1122,59 +1122,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="close-button" id="OverlayMenu1-close" href="#" role="button" aria-hidden="true"><span></span></a>
 </div>
 <div id="preloader"></div>
-
-<script>
-
-	// Track number of clicks per IP
-const clicksPerIP = {};
-
-// Track number of clicks per session  
-let clicksThisSession = 0;
-
-// Max clicks allowed per IP and session
-const maxClicksPerIP = 5;
-const maxClicksPerSession = 3;
-
-// Check IP address
-const ip = window.clientInformation.ip;
-if(!ip){
-  // No IP, likely a bot
-  window.stop(); 
-}
-
-if(!clicksPerIP[ip]){
-  clicksPerIP[ip] = 0;
-}
-
-clicksPerIP[ip]++;
-
-if(clicksPerIP[ip] > maxClicksPerIP){
-  // Too many clicks from this IP
-  window.stop();
-}
-
-
-// Check session cookies
-let sessionId = getCookie('sessionId');
-
-if(!sessionId){
-  // No session, likely a bot
-  window.stop();
-}
-
-clicksThisSession++;
-
-if(clicksThisSession > maxClicksPerSession){
-  // Too many clicks this session
-  window.stop(); 
-}
-
-
-// Other checks like user agent, referrer etc
-
-// If passed all checks, allow loading
-window.location.href = "landingpage.html";
-</script>
 	
 </body>
 </html>
